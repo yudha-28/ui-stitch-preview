@@ -1,0 +1,387 @@
+<html class="light" lang="id"><head></head><body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased relative">```html
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Barang Masuk - Admin Gudang</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+
+
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+<div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+<div class="relative bg-white dark:bg-slate-800 w-full max-w-lg rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">file_export</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Ekspor Data Barang Masuk</h3>
+</div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 space-y-6">
+<div class="space-y-3">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Format File</label>
+<div class="grid grid-cols-3 gap-3">
+<label class="relative flex items-center justify-center p-3 rounded-xl border-2 border-primary bg-primary/5 cursor-pointer group">
+<input checked="" class="sr-only" name="format" type="radio" value="excel"/>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary">table_view</span>
+<span class="text-xs font-bold text-primary">Excel</span>
+</div>
+</label>
+<label class="relative flex items-center justify-center p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 cursor-pointer group">
+<input class="sr-only" name="format" type="radio" value="pdf"/>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary">picture_as_pdf</span>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary">PDF</span>
+</div>
+</label>
+<label class="relative flex items-center justify-center p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 cursor-pointer group">
+<input class="sr-only" name="format" type="radio" value="csv"/>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary">csv</span>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary">CSV</span>
+</div>
+</label>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Rentang Tanggal</label>
+<select class="w-full h-11 rounded-lg border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+<option value="today">Hari Ini</option>
+<option value="week">Minggu Ini</option>
+<option selected="" value="month">Bulan Ini</option>
+<option value="custom">Custom (Pilih Tanggal)</option>
+</select>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Pilih Kolom</label>
+<div class="grid grid-cols-2 gap-x-4 gap-y-2">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">Tanggal</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">Nama Barang</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">Jumlah</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">Supplier</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">Keterangan</span>
+</label>
+</div>
+</div>
+</div>
+<div class="p-6 bg-slate-50 dark:bg-slate-800/80 border-t border-slate-100 dark:border-slate-700 flex gap-3">
+<button class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                Batal
+            </button>
+<button class="flex-[2] px-4 py-2.5 rounded-xl bg-primary hover:bg-blue-600 text-white font-semibold text-sm shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                Unduh Sekarang
+            </button>
+</div>
+</div>
+</div>
+<div class="fixed bottom-6 right-6 z-[70] flex items-center gap-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-5 py-3.5 rounded-xl shadow-2xl">
+<div class="size-5 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+<span class="text-sm font-medium">Menyiapkan file ekspor...</span>
+</div>
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="flex w-64 flex-col bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800">
+<div class="flex h-full flex-col justify-between p-4">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0" data-alt="User profile avatar showing a generic warehouse manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBC_aLtiwha47LqceHuy8C4mnfuKcqY01qcvmIdXaTmxdfWPhbulK-1qRCMDQZvoRU4iqKUFQ-7w0_vtmoIEDkNJuGVpa_KqTmNRf0ZUEDQkfH7jW2hAPeI1tdQLoTlbQXwUacHY7hbOrLH6t8JX8Z6jtaYJLzKd3pEdoPOOvGhNPdhaHmQsui3Y7-QwipyMjEcs-v7ge5nIlJmBTgJsWeLDiC3xQIrQt8H5XAppQpbiPnFqwd5sZh3cJOLWPHuITFCNu5RIHHAIEie");'></div>
+<div class="flex flex-col overflow-hidden">
+<h1 class="text-slate-900 dark:text-white text-base font-bold truncate">Admin Gudang</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal truncate">Gudang Elektronik</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary">home</span>
+<span class="text-sm font-medium">Dasbor</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-blue-400" href="#">
+<span class="material-symbols-outlined fill-1">input</span>
+<span class="text-sm font-medium">Barang Masuk</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary">output</span>
+<span class="text-sm font-medium">Barang Keluar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary">inventory_2</span>
+<span class="text-sm font-medium">Stok</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary">analytics</span>
+<span class="text-sm font-medium">Laporan</span>
+</a>
+</nav>
+</div>
+<div class="px-2">
+<button class="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Keluar</span>
+</button>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<div class="container mx-auto max-w-6xl px-4 py-8 lg:px-8">
+<div class="flex flex-wrap items-center gap-2 mb-6 text-sm">
+<a class="text-slate-500 hover:text-primary transition-colors font-medium" href="#">Dasbor</a>
+<span class="material-symbols-outlined text-slate-400 text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">Barang Masuk</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Barang Masuk</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base">Catat penerimaan barang baru ke dalam gudang.</p>
+</div>
+<div class="flex gap-3">
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+<h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">edit_document</span>
+                                Form Input Barang
+                            </h2>
+<form action="#" class="flex flex-col gap-5">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<label class="flex flex-col gap-1.5">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Tanggal Transaksi</span>
+<div class="relative">
+<input class="w-full h-11 rounded-lg border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary px-3 text-sm" type="date" value="2023-10-25"/>
+</div>
+</label>
+<label class="flex flex-col gap-1.5">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Supplier</span>
+<select class="w-full h-11 rounded-lg border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary px-3 text-sm">
+<option disabled="" value="">Pilih supplier...</option>
+<option selected="" value="pt-maju">PT Maju Elektronik</option>
+<option value="cv-teknik">CV Teknik Abadi</option>
+<option value="global-tech">Global Tech Indo</option>
+</select>
+</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
+<label class="flex flex-col gap-1.5">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Nama Barang</span>
+<div class="relative">
+<input class="w-full h-11 rounded-lg border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary px-3 text-sm" list="barang-list" placeholder="Cari barang..."/>
+<datalist id="barang-list">
+<option value='Monitor LG 24" IPS'></option>
+<option value="Keyboard Mechanical Logitech"></option>
+<option value="Mouse Wireless Dell"></option>
+<option value="Laptop Asus Vivobook"></option>
+</datalist>
+</div>
+</label>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Jumlah Masuk</label>
+<input class="w-full h-11 rounded-lg border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary px-3 text-sm" min="1" placeholder="0" type="number" value="50"/>
+</div>
+</div>
+<label class="flex flex-col gap-1.5 h-full">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Keterangan / Sumber</span>
+<textarea class="w-full flex-1 min-h-[100px] rounded-lg border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary p-3 text-sm resize-none" placeholder="Contoh: No. PO-2023-001..."></textarea>
+</label>
+<div class="flex justify-end pt-4 border-t border-slate-100 dark:border-slate-700 mt-2">
+<button class="bg-primary hover:bg-blue-600 text-white text-sm font-medium px-6 py-2.5 rounded-lg shadow-sm shadow-blue-500/30 transition-all flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-lg">save</span>
+                                        Simpan Data
+                                    </button>
+</div>
+</form>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col">
+<div class="p-5 border-b border-slate-200 dark:border-slate-700 flex flex-wrap items-center justify-between gap-4">
+<h2 class="text-lg font-semibold text-slate-900 dark:text-white">Riwayat Barang Masuk</h2>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-lg">print</span>
+                                        Cetak
+                                    </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border-2 border-primary bg-primary/5 text-primary text-sm font-bold shadow-sm transition-all hover:bg-primary/10">
+<span class="material-symbols-outlined text-lg">file_export</span>
+                                        Ekspor
+                                    </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-700">
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-16">No</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Tanggal</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Barang</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Jumlah</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Supplier</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Keterangan</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-500">1</td>
+<td class="px-6 py-4 text-sm text-slate-900 dark:text-white font-medium">25 Okt 2023</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Mouse Wireless Dell</span>
+<span class="text-xs text-slate-500">ACC-MSE-WL</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-right font-mono text-slate-900 dark:text-white">50</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">PT Maju Elektronik</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 max-w-xs truncate">Restock bulanan</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-500">2</td>
+<td class="px-6 py-4 text-sm text-slate-900 dark:text-white font-medium">24 Okt 2023</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Monitor LG 24" IPS</span>
+<span class="text-xs text-slate-500">MNT-LG-24</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-right font-mono text-slate-900 dark:text-white">20</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">CV Teknik Abadi</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 max-w-xs truncate">PO-2023-102</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-500">3</td>
+<td class="px-6 py-4 text-sm text-slate-900 dark:text-white font-medium">24 Okt 2023</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Keyboard Logitech K120</span>
+<span class="text-xs text-slate-500">ACC-KYB-LG</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-right font-mono text-slate-900 dark:text-white">100</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Global Tech Indo</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 max-w-xs truncate">Promo bundling</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between px-6 py-4 border-t border-slate-200 dark:border-slate-700">
+<span class="text-sm text-slate-500 dark:text-slate-400">Menampilkan 1-3 dari 328 data</span>
+<div class="flex gap-2">
+<button class="size-8 flex items-center justify-center rounded border border-slate-300 dark:border-slate-600 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors disabled:opacity-50">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded border border-slate-300 dark:border-slate-600 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-primary rounded-xl shadow-lg shadow-blue-500/20 p-6 text-white overflow-hidden relative">
+<div class="absolute -right-6 -top-6 size-32 bg-white/10 rounded-full"></div>
+<h3 class="text-blue-100 text-sm font-medium mb-1">Total Barang Masuk</h3>
+<div class="flex items-baseline gap-2 mb-4">
+<span class="text-4xl font-bold">1,240</span>
+<span class="text-blue-200 text-sm">Bulan Ini</span>
+</div>
+<div class="w-full bg-blue-900/30 rounded-full h-1.5 mb-2">
+<div class="bg-white h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+<p class="text-xs text-blue-100 opacity-90">+24% dari bulan lalu</p>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+<h3 class="text-slate-900 dark:text-white font-semibold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500">local_shipping</span>
+                                Supplier Teraktif
+                            </h3>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400">apartment</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-900 dark:text-white truncate">PT Maju Elektronik</p>
+<p class="text-xs text-slate-500">45 Transaksi</p>
+</div>
+<div class="text-green-600 dark:text-green-400 text-xs font-bold">+12%</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400">apartment</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-900 dark:text-white truncate">CV Teknik Abadi</p>
+<p class="text-xs text-slate-500">32 Transaksi</p>
+</div>
+<div class="text-blue-600 dark:text-blue-400 text-xs font-bold">+5%</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-slate-500">apartment</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-900 dark:text-white truncate">Global Tech Indo</p>
+<p class="text-xs text-slate-500">18 Transaksi</p>
+</div>
+<div class="text-slate-500 text-xs font-bold">-2%</div>
+</div>
+</div>
+</div>
+<div class="bg-blue-50 dark:bg-blue-900/10 rounded-xl p-6 border border-blue-100 dark:border-blue-900/20">
+<h3 class="text-blue-900 dark:text-blue-100 font-semibold mb-2 text-sm">Butuh Bantuan?</h3>
+<p class="text-blue-700 dark:text-blue-300 text-xs leading-relaxed mb-3">
+                                Pastikan melakukan pengecekan fisik barang saat kurir tiba sebelum melakukan input.
+                            </p>
+<a class="text-primary text-xs font-bold hover:underline" href="#">Lihat Panduan Penerimaan →</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+```</body></html>
